@@ -1,1 +1,3 @@
-
+-- Exempel på INSERT i huvudtabeller:
+-- MEMBER, TRAINER, SESSION, MEMBERSHIP, PAYMENT, BOOKING
+-- Visar hur man korrekt lägger till relaterade rader
