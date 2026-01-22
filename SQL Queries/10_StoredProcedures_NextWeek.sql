@@ -1,1 +1,2 @@
-
+-- Planerad fil för Stored Procedures som vi implementerar nästa vecka
+-- Kommentarer om vilka procedurer som ska skapas
