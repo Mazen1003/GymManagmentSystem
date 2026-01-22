@@ -1,1 +1,2 @@
-
+-- Exempel på UPDATE i huvudtabeller
+-- Visar realistiska uppdateringar, t.ex. ändra medlemskapstyp, betalningsbelopp
