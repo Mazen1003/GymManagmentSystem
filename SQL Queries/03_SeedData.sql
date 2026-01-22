@@ -1,1 +1,3 @@
-
+-- Denna fil fyller databasen med testdata (minst 30 rader totalt)
+-- Data är realistisk för gym-scenariot
+-- Seed-data används för CRUD och JOIN-queries
