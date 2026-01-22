@@ -1,1 +1,3 @@
-
+-- Planerad fil för Views som vi implementerar nästa vecka
+-- Kommentarer om vilka vyer som ska skapas
+-- Inga vyer körs ännu, filen är tom eller med kommentarer
