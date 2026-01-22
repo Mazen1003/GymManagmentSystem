@@ -1,1 +1,2 @@
-
+-- Exempel på DELETE i huvudtabeller
+-- Tar hänsyn till FK-constraints, t.ex. ta bort BOOKING före MEMBER
