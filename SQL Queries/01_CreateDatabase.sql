@@ -1,1 +1,2 @@
-
+-- Denna fil skapar databasen GymManagementDB och byter till den.
+-- Kör alltid denna fil först innan tabeller skapas.
