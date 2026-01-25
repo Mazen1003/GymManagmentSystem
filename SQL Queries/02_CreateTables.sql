@@ -1,4 +1,70 @@
-Denna fil skapar alla tabeller enligt ERD:
--- MEMBER, TRAINER, SESSION, MEMBERSHIP, PAYMENT, BOOKING
--- PK, FK, CHECK, DEFAULT och UNIQUE constraints finns
--- Tabellerna är normaliserade enligt 3NF
+USE GymManagementDB;
+GO
+
+CREATE TABLE MEMBER (
+    MemberID INT IDENTITY(1,1) PRIMARY KEY,
+    FirstName NVARCHAR(50) NOT NULL,
+    LastName NVARCHAR(50) NOT NULL,
+    Email NVARCHAR(100) NOT NULL UNIQUE,
+    Phone NVARCHAR(20),
+    DateJoined DATE NOT NULL DEFAULT GETDATE()
+);
+GO
+
+
+CREATE TABLE TRAINER (
+    TrainerID INT IDENTITY(1,1) PRIMARY KEY,
+    FirstName NVARCHAR(50) NOT NULL,
+    LastName NVARCHAR(50) NOT NULL,
+    Specialty NVARCHAR(50),
+    Email NVARCHAR(100) NOT NULL UNIQUE
+);
+GO
+
+
+CREATE TABLE SESSION (
+    SessionID INT IDENTITY(1,1) PRIMARY KEY,
+    SessionName NVARCHAR(50) NOT NULL,
+    TrainerID INT NOT NULL,
+    SessionDateTime DATETIME NOT NULL,
+    DurationMinutes INT NOT NULL CHECK (DurationMinutes > 0),
+    MaxParticipants INT NOT NULL CHECK (MaxParticipants > 0),
+    FOREIGN KEY (TrainerID) REFERENCES TRAINER(TrainerID)
+);
+GO
+
+
+CREATE TABLE MEMBERSHIP (
+    MembershipID INT IDENTITY(1,1) PRIMARY KEY,
+    MemberID INT NOT NULL,
+    Type NVARCHAR(50) NOT NULL,
+    StartDate DATE NOT NULL DEFAULT GETDATE(),
+    EndDate DATE,
+    Price DECIMAL(8,2) NOT NULL CHECK (Price >= 0),
+    UNIQUE(MemberID, Type),
+    FOREIGN KEY (MemberID) REFERENCES MEMBER(MemberID)
+);
+GO
+
+
+CREATE TABLE PAYMENT (
+    PaymentID INT IDENTITY(1,1) PRIMARY KEY,
+    MemberID INT NOT NULL,
+    Amount DECIMAL(8,2) NOT NULL CHECK (Amount > 0),
+    PaymentDate DATE NOT NULL DEFAULT GETDATE(),
+    Method NVARCHAR(20) NOT NULL CHECK (Method IN ('Cash','Card','Online')),
+    FOREIGN KEY (MemberID) REFERENCES MEMBER(MemberID)
+);
+GO
+
+
+CREATE TABLE BOOKING (
+    BookingID INT IDENTITY(1,1) PRIMARY KEY,
+    MemberID INT NOT NULL,
+    SessionID INT NOT NULL,
+    BookingDate DATETIME NOT NULL DEFAULT GETDATE(),
+    UNIQUE(MemberID, SessionID),
+    FOREIGN KEY (MemberID) REFERENCES MEMBER(MemberID),
+    FOREIGN KEY (SessionID) REFERENCES SESSION(SessionID)
+);
+GO

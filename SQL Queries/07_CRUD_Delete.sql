@@ -1,2 +1,18 @@
--- Exempel på DELETE i huvudtabeller
--- Tar hänsyn till FK-constraints, t.ex. ta bort BOOKING före MEMBER
+USE GymManagementDB;
+GO
+
+DELETE FROM dbo.BOOKING
+WHERE MemberID = 11 AND SessionID = 7;
+GO
+
+SELECT * FROM dbo.BOOKING
+WHERE MemberID = 11 AND SessionID = 7;
+GO
+
+DELETE FROM dbo.MEMBER
+WHERE MemberID = 11;
+GO
+
+SELECT * FROM dbo.MEMBER
+WHERE MemberID = 11;
+GO
