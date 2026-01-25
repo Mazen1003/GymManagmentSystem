@@ -1,2 +1,1 @@
--- Exempel på JOINs, aggregation och subqueries
--- G-nivå: minst 5 JOINs, 1 med 3 tabeller
+
